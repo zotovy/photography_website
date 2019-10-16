@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{# NOTE: BeerJS for before/after #}
+
+{% block content %}
+
+    <nav id="navbar" class="navbar">
+        <ul class="nav-menu">
+            <li>
+                <a data-scroll="home" href="#home" class="dot active">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a data-scroll="about" href="#about" class="dot">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a data-scroll="work" href="#work" class="dot">
+                    <span>Presets & courses</span>
+                </a>
+            </li>
+            <li>
+                <a data-scroll="contact" href="#contact" class="dot">
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- End Nav Section -->
+
+    <!-- Start Home Section -->
+    <section id="home" class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg-1.jpg' %});"
+             data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+                <div class="col-lg-7 ftco-animate d-flex align-items-center">
+                    <div class="text text-center">
+                        <h1 class="logo"
+                            style="font-family: 'Archivo Black', sans-serif; margin-top: 10px; font-size: 48pt; display: flex; justify-content: center">
+                            <a href="">
+                                FREEMAX
+                                <small>Photographer / Moscow</small>
+                            </a></h1>
+                        <h1 class="mb-4">Make <br>Something Great</h1>
+                        <p class="mb-4">I'm Maxim Rusakov. Photographer, designer, Director. I love making videos
+                            that inspire and motivate people!</p>
+                        <p class="mt-5"><a href="#contact" class="btn-custom">Contact me <span
+                                class="ion-ios-arrow-round-forward"></span></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Home Section -->
+
+    <!-- Start About Me Section -->
+    <section class="ftco-about img ftco-section" id="about">
+        <div class="container">
+            <div class="row d-flex no-gutters">
+                <div class="col-md-6 col-lg-6 d-flex">
+                    <div class="img-about img d-flex align-items-stretch">
+                        <div class="overlay"></div>
+                        <div class="img img-video d-flex align-self-stretch align-items-center"
+                             style="background-image:url({% static 'images/about.jpg' %});">
+                            <div class="video justify-content-center">
+                                <span class="ion-ios-play"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 pl-md-5">
+                    <div class="heading-section ftco-animate">
+                        <h2 class="mb-4">I'm Maxim Rusakov. Photographer, designer, Director.</h2>
+                        <p>
+                            I love making videos that inspire and
+                            motivate people! Also, I create video courses about working in graphic editors, make presets
+                            for photo processing and LUT files for video color correction. I like to take pictures, make
+                            videos, watch good movies, have fun and amuse others.</p>
+
+                        <div class="counter-wrap ftco-animate d-flex my-md-4">
+                            <div class="text">
+                                <p class="mb-4">
+                                    <span class="number" data-number="124">0</span>
+                                    <span>Project complete</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="d-flex w-100">
+                            <div class="img img-about-2 mr-2"
+                                 style="background-image: url({% static 'images/about-2.jpg' %});"></div>
+                            <div class="img img-about-2 ml-2"
+                                 style="background-image: url({% static 'images/about-3.jpg' %});"></div>
+                        </div>
+                        <blockquote class="blockquote mt-5">
+                            <p class="mb-2">"Far far away, behind the word mountains, far from the countries Vokalia and
+                                Consonantia.."</p>
+                            <span>&mdash; Lucy Lee</span>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Me Section -->
+
+    <!-- Start Testimonials Section -->
+    <section id="work" class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4 heading-section text-center ftco-animate pb-5">
+                    <h2 class="mb-4">Presets & Courses</h2>
+                    <p>Exclusive presets & courses by FREEMAX</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid px-md-0">
+            <div class="row no-gutters">
+                {% for preset in presets %}
+                    <a href="{{ preset.get_link }}">
+                        <div class="col-md-6 ftco-animate">
+                            <div class="model img d-flex align-items-end"
+                                 style="background-image: url({{ preset.img.url }})">
+                                <a href="{{ preset.get_link }}"
+                                   class="icon d-flex justify-content-center align-items-center">
+
+                                </a>
+                                <div class="desc w-100 px-4">
+                                    <div class="text w-100 mb-3">
+                                        <a href="{{ preset.get_link }}">
+                                            <span>{{ preset.title }}</span>
+                                            <h2>{{ preset.price }}</h2>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <!-- End Project Section -->
+
+    <!-- Start Contact Section -->
+    <section class="ftco-section contact-section" id="contact">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-4 heading-section text-center ftco-animate">
+                    <h2 class="mb-4">Contact Me</h2>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-md-6 d-flex ftco-animate">
+                    <div class="align-self-stretch box text-center p-4">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="icon-paper-plane"></span>
+                        </div>
+                        <div>
+                            <h3 class="mb-4">Email Address</h3>
+                            <p><a href="mailto:info@yoursite.com">contact@freemax.red</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex ftco-animate">
+                    <div class="align-self-stretch box text-center p-4">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="icon-globe"></span>
+                        </div>
+                        <div>
+                            <h3 class="mb-4">Website</h3>
+                            <p><a href="https://freemax.red/">freemax.red</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row block-9">
+                <div class="col-md-6 ftco-animate">
+                    <form action="." method="POST" class="contact-form p-4 p-md-5 py-md-5">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ contact_form.name }}
+                        </div>
+                        <div class="form-group">
+                            {{ contact_form.email }}
+                        </div>
+                        <div class="form-group">
+                            {{ contact_form.who_is_you }}
+                        </div>
+                        <div class="form-group">
+                            {{ contact_form.message }}
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-6 d-flex align-items-stretch">
+                    <img src="{% static 'images/about-4.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Contact Section -->
+
+
+
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                    stroke="#F96D00"/>
+        </svg>
+    </div>
+
+{% endblock %}

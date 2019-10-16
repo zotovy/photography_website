@@ -1,0 +1,73 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <nav id="navbar-2" class="navbar-2">
+        <ul class="nav-menu">
+            <li>
+                <a href="{%  url 'home' %}" class="dot">
+                    <span>Home</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- End Nav Section -->
+
+
+
+    <section class="ftco-section work-single ftco-no-pt ftco-no-pb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex align-items-stretch">
+                    <div class="img w-100" style="background-image: url({{ preset.img.url }})"></div>
+                </div>
+                <div class="col-md-6 py-md-5">
+                    <div class="text pl-md-5 py-5">
+                        <h1><a href="{{ preset.get_link }}" style="color: white">{{ preset.title }}</a></h1>
+                        <p>{{ preset.description|linebreaks }}</p>
+                        <div class="blockquote mt-5">
+                            <p class="mb-2">"{{ preset.bold_description }}"</p>
+                        </div>
+
+                        <div class="work-info mb-4">
+                            <span></span>
+                            <h3>{{ preset.lot }}</h3>
+                        </div>
+
+                        <div class="work-info mb-4">
+                            <span>Rating</span>
+                            <h3>
+                                {% for i in rating %}
+                                    <span class="icon-star"></span>
+                                {% endfor %}
+                            </h3>
+                        </div>
+
+                        <div class="work-info mb-4">
+                            <h3 style="font-size: 50px">{{ preset.price }}$</h3>
+                        </div>
+                        <a class="btn btn-light" style="width: 100%; padding: 10px;"   href="{{ preset.buy_href }}">
+                            BUY NOW
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                    stroke="#F96D00"/>
+        </svg>
+    </div>
+
+{% endblock %}
